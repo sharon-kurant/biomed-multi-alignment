@@ -1,0 +1,77 @@
+name: carcinogenicity_finetune
+root: "."
+model_dir: ${root}/${name}
+seed: 4224
+
+task:
+  _target_: mammal.examples.carcinogenicity.task.CarcinogenicityTask
+  _partial_: True
+  # details about the arguments below can be found on mammal.examples.carcinogenicity.task.CarcinogenicityTask()
+
+  data_module_kwargs:
+    # details about the arguments below can be found on mammal.examples.carcinogenicity.pl_data_module.CarcinogenicityDataModule()
+    batch_size: 15
+    drug_max_seq_length: 300  # Maximum drug length in the dataset is 292.
+    encoder_input_max_seq_len: 320  # 20 chars buffer for special tokens.
+    labels_max_seq_len: 4
+
+
+# tokenizer
+tokenizer:
+  tokenizer_path: ibm/biomed.omics.bl.sm.ma-ted-400m
+  new_special_tokens:
+    - "<CARCINOGENICITY>"
+
+model:
+  mammal_kwargs: null # arguments for Mammal.__init__()
+  pretrained_kwargs: # arguments for Mammal.from_pretrained() which triggered only if pretrained_model_name_or_path is not None
+    pretrained_model_name_or_path: ibm/biomed.omics.bl.sm.ma-ted-400m
+
+# lightning module
+module:
+  opt_callable:
+    _target_: torch.optim.AdamW
+    _partial_: true
+    # arguments for torch.optim.AdamW()
+    lr: 0.00001
+
+  lr_sch_callable:
+    _target_: mammal.lr_schedulers.cosine_annealing_with_warmup_lr_scheduler
+    _partial_: True
+    T_max: 10000
+    num_warmup_steps: 300
+    eta_min_factor: 0.1
+
+  model_dir: ${model_dir}
+  best_epoch_source:
+    monitor: validation.metrics.carcinogenicity_acc  # possible options are validation.metrics.<task_name>_<metric_name>
+
+    mode: max
+
+# train
+trainer:
+  # arguments for pytorch_lightning.Trainer()
+  max_epochs: 100
+  default_root_dir: ${model_dir}
+  accelerator: "auto"
+  devices: 1
+  num_nodes: 1
+  num_sanity_val_steps: 0
+
+
+# experiment tracker
+track_clearml: # arguments for fuse.dl.lightning.pl_funcs.start_clearml_logger
+  project_name: "mammal/opensource"
+  task_name: ${name}
+  tags: "mammal"
+  reuse_last_task_id: True
+  continue_last_task: False
+  offline_mode: False
+
+evaluate : false #if true then it will use lightning's validate on the test dataloader
+
+hydra:
+  run:
+    dir: ${model_dir}
+  job:
+    chdir: False

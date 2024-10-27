@@ -1,0 +1,83 @@
+# configuration approach followed:
+# - whenever possible, prefer pyproject.toml
+# - for configurations insufficiently supported by pyproject.toml, use setup.cfg instead
+# - setup.py discouraged; minimal stub included only for compatibility with legacy tools
+
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mammal"
+description = "MAMMAL OS"
+#authors = [["IBM",],]
+version = "0.0.2"
+readme = "README.md"
+# due to how PEP 440 defines version matching, prefer [incl, excl) definitions like below:
+requires-python = ">=3.10, <3.13"
+dependencies = [
+"fuse-med-ml==0.4.0",
+"tensorflow>=2.17",
+"peft",
+"tabulate",
+"clearml",
+"hydra-core",
+"pytest",
+]
+
+[project.optional-dependencies]
+examples = [
+  "PyTDC"
+]
+
+[project.urls]
+repository = "https://github.ibm.com/BiomedSciAI-Innersource/bmfm-mammal-release"
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.ruff]
+target-version = "py310"
+extend-include = ["*.ipynb"]
+
+# Activate all the rules that are pyupgrade-related
+lint.select = [
+#  "UP",   # pyupgrade
+  "D",    # pydocstyle
+  "PT",   # pytest style checking
+  "C4",   # comprehensions style checking
+  "PD",   # pandas style checking
+  "F",    # pyflakes: is-literal
+  "W605", # pycodestyle: invalid-escape-sequence
+  "I",    # isort
+]
+# On top of the Google convention, disable `D417`, which requires
+# documentation for every function parameter.
+lint.ignore = [
+  "D100",  # pydocstyle: Missing module docstring
+  "D101",  # pydocstyle: Missing module-level docstring
+  "D102",  # pydocstyle: Missing docstring in public module
+  "D103",  # pydocstyle: Missing class docstring
+  "D105",  # pydocstyle: Missing docstring in magic method
+  "D107",  # pydocstyle: Missing parameter descriptions in the docstring
+  "D203",  # pydocstyle: 1 blank line required before class docstring
+  "D205",  # pydocstyle: 1 blank line required between summary line and description
+  "D212",  # pydocstyle: Multi-line docstring summary should start at the first line
+  "D401",  # pydocstyle: First line should be in imperative mood
+  "D417",  # pydocstyle: Missing argument descriptions in the docstring
+  "F841",  # flake8: unused variable
+  "PD011", # pandas do not use .values (false positives causing bugs in torch code)
+  "PD015", # Use .merge method instead of pd.merge function. They have equivalent functionality.
+  "PT011", #TODO remove
+  "UP035", # TODO types. remove
+]
+[lint.per-file-ignores]
+"__init__.py" = ["I001"]
+
+
+[tool.coverage.report]
+
+exclude_lines = ["pragma: no cover", "abc.abstractmethod", "@abstract"]
+
+#[tool.coverage.run]
+#omit = ["gene_benchmark/tests/*"]

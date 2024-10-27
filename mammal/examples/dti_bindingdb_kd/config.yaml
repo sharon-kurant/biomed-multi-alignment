@@ -1,0 +1,92 @@
+name: mammal_tdc_dti_bindingdb_kd
+root: "."
+model_dir: ${root}/${name}
+seed: 1234
+
+
+task:
+  _target_: mammal.examples.dti_bindingdb_kd.task.DtiBindingdbKdTask
+  _partial_: True
+  # details about the arguments below can be found on mammal.examples.dti_bindingdb_kd.task.DtiBindingdbKdTask()
+  name: dti_bindingdb_kd
+  seed: ${seed}
+  norm_y_mean: 5.79384684128215
+  norm_y_std: 1.33808027428196
+
+  data_module_kwargs:
+    # details about the arguments below can be found on mammal.examples.dti_bindingdb_kd.pl_data_module.DtiBindingdbKdDataModule()
+    load_datasets_kwargs:
+      split_type: "cold_split"
+      split_column: ["Drug", "Target"]
+    train_dl_kwargs: # Dataloader constructor parameters
+      num_workers: 8
+    valid_dl_kwargs: # Dataloader constructor parameters
+      num_workers: 8
+
+    batch_size: 8 # over a100_80g
+    target_max_seq_length: 1250
+    drug_max_seq_length: 256
+    encoder_input_max_seq_len: 1560
+
+
+# tokenizer
+tokenizer:
+  tokenizer_path: ibm/biomed.omics.bl.sm.ma-ted-400m
+
+model:
+  mammal_kwargs: null # arguments for Mammal.__init__()
+  pretrained_kwargs: # arguments for Mammal.from_pretrained() which triggered only if pretrained_model_name_or_path is not None
+    pretrained_model_name_or_path: ibm/biomed.omics.bl.sm.ma-ted-400m
+
+# lightning module
+module:
+  opt_callable:
+    _target_: torch.optim.AdamW
+    _partial_: true
+    # arguments for torch.optim.AdamW()
+    lr: 0.00001
+
+  lr_sch_callable:
+    _target_: mammal.lr_schedulers.cosine_annealing_with_warmup_lr_scheduler
+    _partial_: True
+    # arguments for mammal.lr_schedulers.cosine_annealing_with_warmup_lr_scheduler()
+    T_max: 100000
+    eta_min_factor: 0.1
+
+  model_dir: ${model_dir}
+  best_epoch_source:
+    # arguments for pytorch_lightning.callbacks.ModelCheckpoint()
+    monitor: validation.losses.dti_bindingdb_kd_scalars_mse  # possible options are validation.metrics.<task_name>_<metric_name>
+
+    mode: min
+
+# train
+trainer:
+  # arguments for pytorch_lightning.Trainer()
+  max_epochs: 1000
+  default_root_dir: ${model_dir}
+  accelerator: "auto"
+  devices: 1
+  num_nodes: 1
+  strategy: "ddp_find_unused_parameters_true"
+  use_distributed_sampler: False  # Must be set when using a batch sampler
+  num_sanity_val_steps: 0
+  # limit_train_batches: 128
+  # limit_val_batches: 128
+
+# experiment tracker
+track_clearml: # arguments for fuse.dl.lightning.pl_funcs.start_clearml_logger
+  project_name: "mammal/opensource"
+  task_name: ${name}
+  tags: "mammal"
+  reuse_last_task_id: True
+  continue_last_task: False
+  offline_mode: False
+
+evaluate : false #if true then it will use lightning's validate on the test dataloader
+
+hydra:
+  run:
+    dir: ${model_dir}
+  job:
+    chdir: False
