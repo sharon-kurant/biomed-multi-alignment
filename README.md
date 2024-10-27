@@ -29,8 +29,8 @@ Follow the next steps to install MAMMAL in a new environment:
 
 3. Install the package in an [editable mode](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs) using `pip`:
    ```
-   git clone git@github.ibm.com:BiomedSciAI-Innersource/bmfm-mammal-release.git
-   pip install -e ./bmfm-mammal-release[examples]
+   git clone git@github.com:BiomedSciAI/biomed-multi-alignment.git
+   pip install -e ./biomed-multi-alignment[examples]
    ```
 
 ## Usage - Protein-Protein Interaction
