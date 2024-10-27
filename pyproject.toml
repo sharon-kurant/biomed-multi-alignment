@@ -31,7 +31,7 @@ examples = [
 ]
 
 [project.urls]
-repository = "https://github.ibm.com/BiomedSciAI-Innersource/bmfm-mammal-release"
+repository = "https://github.com/BiomedSciAI/biomed-multi-alignment"
 
 [tool.setuptools.packages]
 find = {}

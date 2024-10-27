@@ -10,11 +10,11 @@ body:
     attributes:
       value: >
         **Thanks :heart: for taking the time to fill out this feature request report!** We kindly ask that you search to
-        see if an issue [already exists](https://github.ibm.com/BiomedSciAI-Innersource/bmfm-mammal-release/issues) for
+        see if an issue [already exists](https://github.com/BiomedSciAI/biomed-multi-alignment/issues) for
         your feature.
 
         We are also happy to accept contributions from our users. For more details see
-        [here](https://github.ibm.com/BiomedSciAI-Innersource/bmfm-mammal-release/blob/main/CONTRIBUTING.md).
+        [here](https://github.com/BiomedSciAI/biomed-multi-alignment/blob/main/CONTRIBUTING.md).
 
   - type: textarea
     attributes:
