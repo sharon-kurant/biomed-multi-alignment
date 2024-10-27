@@ -18,13 +18,13 @@ MAMMAL is tested on Python >= 3.10 and PyTorch >= 2.0
 Follow the next steps to install MAMMAL in a new environment:
 1. Create conda environment:
     ```
-    conda create -n mammal_env python=3.10
+    conda create -n mammal_env python=3.10 -y
     conda activate mammal_env
     ```
 
-2. Install PyTorch: (see [here](https://pytorch.org/get-started/locally/)).
+2. Install PyTorch: (see [here](https://pytorch.org/get-started/locally/)). For example:
    ```
-   conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+   conda install pytorch pytorch-cuda=12.1 -c pytorch -c nvidia
    ```
 
 3. Install the package in an [editable mode](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs) using `pip`:
