@@ -11,7 +11,7 @@ body:
     attributes:
       value: >
         **Thanks :heart: for taking the time to fill out this bug report!** We kindly ask that you search to see if an
-        issue [already exists](https://github.ibm.com/BiomedSciAI-Innersource/bmfm-mammal-release/issues) for the bug you encountered.
+        issue [already exists](https://github.com/BiomedSciAI/biomed-multi-alignment/issues) for the bug you encountered.
 
   - type: textarea
     attributes:

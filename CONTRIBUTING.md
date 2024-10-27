@@ -4,8 +4,8 @@ First off, thanks for taking the time to contribute!
 
 ## How do I report a bug or suggest an enhancement?
 
-- As a first step, please search in the [existing issues](https://github.ibm.com/BiomedSciAI-Innersource/bmfm-mammal-release/issues) to check if your point has already been addressed.
-- If that is not the case, go ahead and [create an issue](https://github.ibm.com/BiomedSciAI-Innersource/bmfm-mammal-release/issues/new/choose) of the respective type, providing the details as instructed in the template.
+- As a first step, please search in the [existing issues](https://github.com/BiomedSciAI/biomed-multi-alignment/issues) to check if your point has already been addressed.
+- If that is not the case, go ahead and [create an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new/choose) of the respective type, providing the details as instructed in the template.
 
 ## How do I submit a change?
 
