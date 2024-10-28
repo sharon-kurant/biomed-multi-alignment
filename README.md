@@ -150,5 +150,13 @@ To run evaluation, run the following command:
 python mammal/main_finetune.py --config-name config.yaml --config-path  examples/dti_bindingdb_kd evaluate=True model.pretrained_kwargs.pretrained_model_name_or_path=<path to finetune output dir>/best_epoch.ckpt
 ```
 
+# Tutorials
+If you are interested in a specific guide / tutorial, feel free to [open an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new).
+### Beginner
+* TBD
+### Advanced
+* Create a new Mammal task. [[link](./tutorials/advanced_create_new_task.ipynb)]
+
+
 # Citations
 If you find our work useful for your research, we ask you to cite the relevant papers:
