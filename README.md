@@ -102,7 +102,7 @@ To run inference, run the following command:
 ```
 python mammal/examples/protein_solubility/main_infer.py <path to finetune output dir> <amino acid sequence of protein>
 ```
-## Evaluation
+### Evaluation
 To run the evaluation, use the following command:
 ```
 python mammal/main_finetune.py --config-name config.yaml --config-path  examples/protein_solubility evaluate=True model.pretrained_kwargs.pretrained_model_name_or_path=<path to finetune output dir>/best_epoch.ckpt
