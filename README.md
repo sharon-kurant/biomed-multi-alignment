@@ -10,7 +10,7 @@ The syntax allows for dynamic combinations of tokens and scalars, enabling class
 
 The model weights are stored on https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-400m and the MAMMAL core code together with fine-tuning and inference can be found here.
 
-**TBD: add main paper figure when ready**
+![Alt text](mammal.png)
 
 ## Installation
 MAMMAL is tested on Python >= 3.10 and PyTorch >= 2.0
