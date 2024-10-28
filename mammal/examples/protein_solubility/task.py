@@ -1,11 +1,9 @@
-from functools import partial
 from typing import Any
 
 import numpy as np
 import pytorch_lightning as pl
 import torch
 from fuse.data.tokenizers.modular_tokenizer.op import ModularTokenizerOp
-from fuse.utils import NDict
 
 from mammal.examples.protein_solubility.pl_data_module import (
     ProteinSolubilityDataModule,
@@ -90,13 +88,13 @@ class ProteinSolubilityTask(MammalTask):
         sample_dict: dict,
         *,
         protein_sequence_key: str,
+        tokenizer_op: ModularTokenizerOp,
         solubility_label_key: int | None = None,
         protein_max_seq_length: int = 1250,
         encoder_input_max_seq_len: int | None = 1260,
         labels_max_seq_len: int | None = 4,
-        tokenizer_op: ModularTokenizerOp,
         device: str | torch.device = "cpu",
-    ) -> str:
+    ) -> dict:
         """
         :param sample_dict: a dictionary with raw data
         :param protein_sequence_key: sample_dict key which points to protein sequence
