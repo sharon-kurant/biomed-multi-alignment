@@ -102,6 +102,11 @@ To run inference, run the following command:
 ```
 python mammal/examples/protein_solubility/main_infer.py <path to finetune output dir> <amino acid sequence of protein>
 ```
+## Evaluation
+To run the evaluation, use the following command:
+```
+python mammal/main_finetune.py --config-name config.yaml --config-path  examples/protein_solubility evaluate=True model.pretrained_kwargs.pretrained_model_name_or_path=<path to finetune output dir>/best_epoch.ckpt
+```
 
 ## Drug carcinogenicity prediction
 A [TDC task](https://tdcommons.ai/single_pred_tasks/tox/#carcinogens) of a binary classification. Given a drug SMILES string, predict whether it can cause carcinogens.
@@ -117,13 +122,6 @@ To run inference, run the following command:
 ```
 # python mammal/examples/carcinogenicity/main_infer.py <path to finetune output dir> <drug sequence>
 python mammal/examples/carcinogenicity/main_infer.py ./carcinogenicity_finetune "CC(CCl)OC(C)CCl"
-```
-
-
-# Evaluation
-To run evaluation, run the following command:
-```
-python mammal/main_finetune.py --config-name config.yaml --config-path  examples/protein_solubility evaluate=True model.pretrained_kwargs.pretrained_model_name_or_path=<path to finetune output dir>/best_epoch.ckpt
 ```
 
 ## Drug Target Interaction
