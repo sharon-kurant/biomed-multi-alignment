@@ -1,7 +1,7 @@
 
 # biomed-multi-alignment
 
-We introduce **ibm/biomed.omics.bl.sm.ma-ted-400m**.
+We introduce **ibm/biomed.omics.bl.sm.ma-ted-458m**.
 A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene data.
 Designed for robust performance, it achieves state-of-the-art results over a variety of tasks across the entire drug discovery pipeline and the diverse biomedical domains.
 
@@ -34,7 +34,7 @@ Follow the next steps to install MAMMAL in a new environment:
    ```
 
 ## Usage - Protein-Protein Interaction
-A simple example for a task already supported by `ibm/biomed.omics.bl.sm.ma-ted-400m`:
+A simple example for a task already supported by `ibm/biomed.omics.bl.sm.ma-ted-458m`:
 ```python
 import torch
 from fuse.data.tokenizers.modular_tokenizer.op import ModularTokenizerOp
@@ -42,10 +42,10 @@ from mammal.model import Mammal
 from mammal.keys import *
 
 # Load Model
-model = Mammal.from_pretrained("ibm/biomed.omics.bl.sm.ma-ted-400m")
+model = Mammal.from_pretrained("ibm/biomed.omics.bl.sm.ma-ted-458m")
 
 # Load Tokenizer
-tokenizer_op = ModularTokenizerOp.from_pretrained("ibm/biomed.omics.bl.sm.ma-ted-400m")
+tokenizer_op = ModularTokenizerOp.from_pretrained("ibm/biomed.omics.bl.sm.ma-ted-458m")
 
 # Prepare Input Prompt
 protein_calmodulin = "MADQLTEEQIAEFKEAFSLFDKDGDGTITTKELGTVMRSLGQNPTEAELQDMISELDQDGFIDKEDLHDGDGKISFEEFLNLVNKEMTADVDGDGQVNYEEFVTMMTSK"
