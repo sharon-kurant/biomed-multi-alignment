@@ -2,7 +2,7 @@
 # biomed-multi-alignment
 
 We introduce **ibm/biomed.omics.bl.sm.ma-ted-458m**.
-A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene data.
+A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene expression data.
 Designed for robust performance, it achieves state-of-the-art results over a variety of tasks across the entire drug discovery pipeline and the diverse biomedical domains.
 
 Based on the **MAMMAL** - **M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage, a flexible, multi-domain architecture with an adaptable task prompt syntax.
