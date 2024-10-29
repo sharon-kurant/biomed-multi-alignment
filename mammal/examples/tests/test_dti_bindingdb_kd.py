@@ -61,7 +61,7 @@ def test_evaluate(model_dir: str):
         "evaluate=True",
         f"model.pretrained_kwargs.pretrained_model_name_or_path={model_dir}/best_epoch.ckpt",
     ]
-    with hydra.initialize_config_dir(TEST_CONFIG_DIRPATH):
+    with hydra.initialize_config_dir(TEST_CONFIG_DIRPATH, version_base="1.1"):
         _cfg = hydra.compose(TEST_CONFIG_FILENAME, overrides=OVERRIDES)
     cfg = hydra.utils.instantiate(_cfg)
     main_finetune(cfg)
