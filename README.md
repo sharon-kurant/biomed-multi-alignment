@@ -5,7 +5,7 @@ We introduce **ibm/biomed.omics.bl.sm.ma-ted-458m**.
 A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene data.
 Designed for robust performance, it achieves state-of-the-art results over a variety of tasks across the entire drug discovery pipeline and the diverse biomedical domains.
 
-Based on the **M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage (**MAMMAL**), a flexible, multi-domain architecture with an adaptable task prompt syntax.
+Based on the **MAMMAL** - **M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage, a flexible, multi-domain architecture with an adaptable task prompt syntax.
 The syntax allows for dynamic combinations of tokens and scalars, enabling classification, regression, and generation tasks either within a single domain or with cross-domain entities.
 
 The model weights are stored on https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-400m and the MAMMAL core code together with fine-tuning and inference can be found here.
