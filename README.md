@@ -2,13 +2,13 @@
 # biomed-multi-alignment
 
 We introduce **ibm/biomed.omics.bl.sm.ma-ted-458m**.
-A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene data.
+A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene expression data.
 Designed for robust performance, it achieves state-of-the-art results over a variety of tasks across the entire drug discovery pipeline and the diverse biomedical domains.
 
 Based on the **MAMMAL** - **M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage, a flexible, multi-domain architecture with an adaptable task prompt syntax.
 The syntax allows for dynamic combinations of tokens and scalars, enabling classification, regression, and generation tasks either within a single domain or with cross-domain entities.
 
-The model weights are stored on https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-400m and the MAMMAL core code together with fine-tuning and inference can be found here.
+The model weights are stored on https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-458m and the MAMMAL core code together with fine-tuning and inference can be found here.
 
 ![Alt text](mammal.png)
 
@@ -87,7 +87,7 @@ Since we aim to avoid re-distributing data, we chose tasks with datasets that we
 
 ## Protein solubility prediction
 Protein solubility is a critical factor in both pharmaceutical research and production processes, as it can significantly impact the quality and function of a protein.
-This is an example for finetuning `ibm/biomed.omics.bl.sm-ted-400` for protein solubility prediction (binary classification) based solely on the amino acid sequence.
+This is an example for finetuning `ibm/biomed.omics.bl.sm-ted-458` for protein solubility prediction (binary classification) based solely on the amino acid sequence.
 The benchmark defined in: https://academic.oup.com/bioinformatics/article/34/15/2605/4938490
 Data retrieved from: https://zenodo.org/records/1162886
 
@@ -126,7 +126,7 @@ python mammal/examples/carcinogenicity/main_infer.py ./carcinogenicity_finetune 
 
 ## Drug Target Interaction
 Accurate prediction of drug-target binding affinity is essential in the early stages of drug discovery.
-This is an example of finetuning `ibm/biomed.omics.bl.sm-ted-400` the task.
+This is an example of finetuning `ibm/biomed.omics.bl.sm-ted-458` the task.
 Prediction of binding affinities using pKd, the negative logarithm of the dissociation constant, which reflects the strength of the interaction between a small molecule (drug) and a protein (target).
 The expected inputs for the model are the amino acid sequence of the target and the SMILES representation of the drug.
 The benchmark defined on: https://tdcommons.ai/multi_pred_tasks/dti/
