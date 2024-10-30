@@ -79,7 +79,6 @@ generated_output = tokenizer_op._tokenizer.decode(batch_dict[CLS_PRED][0])
 print(f"{generated_output=}")
 ```
 
-
 # Examples
 We provide several example tasks, including one from each domain and a multi-domain task.
 Since we aim to avoid re-distributing data, we chose tasks with datasets that we can automatically and easily download with a known data split, but not necessarily benchmarks with known State Of The Art we can compare to.
@@ -153,7 +152,7 @@ python mammal/main_finetune.py --config-name config.yaml --config-path  examples
 # Tutorials
 If you are interested in a specific guide / tutorial, feel free to [open an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new).
 ### Beginner
-* TBD
+* TBD  
 ### Advanced
 * Create a new Mammal task. [[link](./tutorials/advanced_create_new_task.ipynb)]
 
