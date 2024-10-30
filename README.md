@@ -80,6 +80,10 @@ print(f"{generated_output=}")
 ```
 
 
+## Modular Tokenizer
+Since many of the tasks in the examples below use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer). 
+
+
 # Examples
 We provide several example tasks, including one from each domain and a multi-domain task.
 Since we aim to avoid re-distributing data, we chose tasks with datasets that we can automatically and easily download with a known data split, but not necessarily benchmarks with known State Of The Art we can compare to.
@@ -109,7 +113,7 @@ python mammal/main_finetune.py --config-name config.yaml --config-path  examples
 ```
 
 ## Drug carcinogenicity prediction
-A [TDC task](https://tdcommons.ai/single_pred_tasks/tox/#carcinogens) of a binary classification. Given a drug SMILES string, predict whether it can cause carcinogens.
+A [TDC task](https://tdcommons.ai/single_pred_tasks/tox/#carcinogens) of a binary classification. Given a drug SMILES string, predict whether it can cause cancer.
 > A carcinogen is any substance, radionuclide, or radiation that promotes carcinogenesis, the formation of cancer. This may be due to the ability to damage the genome or to the disruption of cellular metabolic processes.
 
 ### Finetune
