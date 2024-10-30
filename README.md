@@ -2,13 +2,13 @@
 # biomed-multi-alignment
 
 We introduce **ibm/biomed.omics.bl.sm.ma-ted-458m**.
-A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene expression data.
-Designed for robust performance, it achieves state-of-the-art results over a variety of tasks across the entire drug discovery pipeline and the diverse biomedical domains.
+A biomedical foundation model trained on over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene expression data.
+Designed for robust performance, it achieves state-of-the-art results on a variety of tasks across the entire drug discovery pipeline and diverse biomedical domains.
 
-Based on the **MAMMAL** - **M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage, a flexible, multi-domain architecture with an adaptable task prompt syntax.
+The model is based on **MAMMAL** (**M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage), a flexible, multi-domain architecture with an adaptable task prompt syntax.
 The syntax allows for dynamic combinations of tokens and scalars, enabling classification, regression, and generation tasks either within a single domain or with cross-domain entities.
 
-The model weights are stored on https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-458m and the MAMMAL core code together with fine-tuning and inference can be found here.
+The model weights are stored at https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-458m and the MAMMAL core code together with fine-tuning and inference can be found in this repo.
 
 ![Alt text](mammal.png)
 
@@ -88,8 +88,8 @@ Since we aim to avoid re-distributing data, we chose tasks with datasets that we
 ## Protein solubility prediction
 Protein solubility is a critical factor in both pharmaceutical research and production processes, as it can significantly impact the quality and function of a protein.
 This is an example for finetuning `ibm/biomed.omics.bl.sm-ted-458` for protein solubility prediction (binary classification) based solely on the amino acid sequence.
-The benchmark defined in: https://academic.oup.com/bioinformatics/article/34/15/2605/4938490
-Data retrieved from: https://zenodo.org/records/1162886
+The benchmark is defined in: https://academic.oup.com/bioinformatics/article/34/15/2605/4938490
+Data was retrieved from: https://zenodo.org/records/1162886
 
 
 ### Finetune
@@ -160,3 +160,4 @@ If you are interested in a specific guide / tutorial, feel free to [open an issu
 
 # Citations
 If you find our work useful for your research, we ask you to cite the relevant papers:
+* TBD
