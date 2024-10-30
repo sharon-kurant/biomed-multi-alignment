@@ -33,7 +33,14 @@ Follow the next steps to install MAMMAL in a new environment:
    pip install -e ./biomed-multi-alignment[examples]
    ```
 
-## Usage - Protein-Protein Interaction
+
+# Examples
+We provide a variety of example tasks, covering one from each domain as well as a multi-domain task. To facilitate easy setup, we've selected tasks with datasets that can be automatically downloaded and come with established data splits.  
+While these tasks may not necessarily have State-of-the-Art results we can compare to, they offer practical demonstrations of model application.
+
+Additionally, since the pre-trained model was also trained on a protein-protein interaction task, we demonstrate inference using this task with ibm/biomed.omics.bl.sm.ma-ted-458m.
+
+## Protein-Protein Interaction
 A simple example for a task already supported by `ibm/biomed.omics.bl.sm.ma-ted-458m`:
 ```python
 import torch
@@ -78,16 +85,6 @@ batch_dict = model.generate(
 generated_output = tokenizer_op._tokenizer.decode(batch_dict[CLS_PRED][0])
 print(f"{generated_output=}")
 ```
-
-
-## Modular Tokenizer
-Since many of the tasks in the examples below use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer). 
-
-
-# Examples
-We provide several example tasks, including one from each domain and a multi-domain task.
-Since we aim to avoid re-distributing data, we chose tasks with datasets that we can automatically and easily download with a known data split, but not necessarily benchmarks with known State Of The Art we can compare to.
-
 
 ## Protein solubility prediction
 Protein solubility is a critical factor in both pharmaceutical research and production processes, as it can significantly impact the quality and function of a protein.
@@ -153,6 +150,9 @@ To run evaluation, run the following command:
 ```
 python mammal/main_finetune.py --config-name config.yaml --config-path  examples/dti_bindingdb_kd evaluate=True model.pretrained_kwargs.pretrained_model_name_or_path=<path to finetune output dir>/best_epoch.ckpt
 ```
+
+# Modular Tokenizer
+Since many of the tasks in the examples below use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer). 
 
 # Tutorials
 If you are interested in a specific guide / tutorial, feel free to [open an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new).
