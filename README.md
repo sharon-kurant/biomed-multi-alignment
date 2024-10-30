@@ -2,13 +2,13 @@
 # biomed-multi-alignment
 
 We introduce **ibm/biomed.omics.bl.sm.ma-ted-458m**.
-A biomedical foundation model trained over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene expression data.
-Designed for robust performance, it achieves state-of-the-art results over a variety of tasks across the entire drug discovery pipeline and the diverse biomedical domains.
+A biomedical foundation model trained on over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene expression data.
+Designed for robust performance, it achieves state-of-the-art results on a variety of tasks across the entire drug discovery pipeline and diverse biomedical domains.
 
-Based on the **MAMMAL** - **M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage, a flexible, multi-domain architecture with an adaptable task prompt syntax.
+The model is based on **MAMMAL** (**M**olecular **A**ligned **M**ulti-**M**odal **A**rchitecture and **L**anguage), a flexible, multi-domain architecture with an adaptable task prompt syntax.
 The syntax allows for dynamic combinations of tokens and scalars, enabling classification, regression, and generation tasks either within a single domain or with cross-domain entities.
 
-The model weights are stored on https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-458m and the MAMMAL core code together with fine-tuning and inference can be found here.
+The model weights are stored at https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-458m and the MAMMAL core code together with fine-tuning and inference can be found in this repo.
 
 ![Alt text](mammal.png)
 
@@ -33,7 +33,14 @@ Follow the next steps to install MAMMAL in a new environment:
    pip install -e ./biomed-multi-alignment[examples]
    ```
 
-## Usage - Protein-Protein Interaction
+
+# Examples
+We provide a variety of example tasks, covering one from each domain as well as a multi-domain task. To facilitate easy setup, we've selected tasks with datasets that can be automatically downloaded and come with established data splits.  
+While these tasks may not necessarily have State-of-the-Art results we can compare to, they offer practical demonstrations of model application.
+
+Additionally, since the pre-trained model was also trained on a protein-protein interaction task, we demonstrate inference using this task with ibm/biomed.omics.bl.sm.ma-ted-458m.
+
+## Protein-Protein Interaction
 A simple example for a task already supported by `ibm/biomed.omics.bl.sm.ma-ted-458m`:
 ```python
 import torch
@@ -87,8 +94,8 @@ Since we aim to avoid re-distributing data, we chose tasks with datasets that we
 ## Protein solubility prediction
 Protein solubility is a critical factor in both pharmaceutical research and production processes, as it can significantly impact the quality and function of a protein.
 This is an example for finetuning `ibm/biomed.omics.bl.sm-ted-458` for protein solubility prediction (binary classification) based solely on the amino acid sequence.
-The benchmark defined in: https://academic.oup.com/bioinformatics/article/34/15/2605/4938490
-Data retrieved from: https://zenodo.org/records/1162886
+The benchmark is defined in: https://academic.oup.com/bioinformatics/article/34/15/2605/4938490
+Data was retrieved from: https://zenodo.org/records/1162886
 
 
 ### Finetune
@@ -108,7 +115,7 @@ python mammal/main_finetune.py --config-name config.yaml --config-path  examples
 ```
 
 ## Drug carcinogenicity prediction
-A [TDC task](https://tdcommons.ai/single_pred_tasks/tox/#carcinogens) of a binary classification. Given a drug SMILES string, predict whether it can cause carcinogens.
+A [TDC task](https://tdcommons.ai/single_pred_tasks/tox/#carcinogens) of a binary classification. Given a drug SMILES string, predict whether it can cause cancer.
 > A carcinogen is any substance, radionuclide, or radiation that promotes carcinogenesis, the formation of cancer. This may be due to the ability to damage the genome or to the disruption of cellular metabolic processes.
 
 ### Finetune
@@ -149,6 +156,9 @@ To run evaluation, run the following command:
 python mammal/main_finetune.py --config-name config.yaml --config-path  examples/dti_bindingdb_kd evaluate=True model.pretrained_kwargs.pretrained_model_name_or_path=<path to finetune output dir>/best_epoch.ckpt
 ```
 
+# Modular Tokenizer
+Since many of the tasks in the examples below use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer). 
+
 # Tutorials
 If you are interested in a specific guide / tutorial, feel free to [open an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new).
 ### Beginner
@@ -159,3 +169,4 @@ If you are interested in a specific guide / tutorial, feel free to [open an issu
 
 # Citations
 If you find our work useful for your research, we ask you to cite the relevant papers:
+* TBD
