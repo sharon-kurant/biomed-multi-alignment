@@ -86,6 +86,11 @@ generated_output = tokenizer_op._tokenizer.decode(batch_dict[CLS_PRED][0])
 print(f"{generated_output=}")
 ```
 
+# Examples
+We provide several example tasks, including one from each domain and a multi-domain task.
+Since we aim to avoid re-distributing data, we chose tasks with datasets that we can automatically and easily download with a known data split, but not necessarily benchmarks with known State Of The Art we can compare to.
+
+
 ## Protein solubility prediction
 Protein solubility is a critical factor in both pharmaceutical research and production processes, as it can significantly impact the quality and function of a protein.
 This is an example for finetuning `ibm/biomed.omics.bl.sm-ted-458` for protein solubility prediction (binary classification) based solely on the amino acid sequence.
@@ -157,7 +162,7 @@ Since many of the tasks in the examples below use different modalities (amino ac
 # Tutorials
 If you are interested in a specific guide / tutorial, feel free to [open an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new).
 ### Beginner
-* TBD
+* TBD  
 ### Advanced
 * Create a new Mammal task. [[link](./tutorials/advanced_create_new_task.ipynb)]
 
