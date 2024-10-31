@@ -50,6 +50,8 @@ from mammal.keys import *
 
 # Load Model
 model = Mammal.from_pretrained("ibm/biomed.omics.bl.sm.ma-ted-458m")
+# Set model to evaluation mode
+model.eval()
 
 # Load Tokenizer
 tokenizer_op = ModularTokenizerOp.from_pretrained("ibm/biomed.omics.bl.sm.ma-ted-458m")
