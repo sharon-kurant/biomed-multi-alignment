@@ -181,12 +181,9 @@ class DtiBindingdbKdTask(MammalTask):
                 (sample_dict[LABELS_TOKENS][..., None] == pad_id_tns).any(-1).nonzero()
             ] = ignore_token_value
 
-            sample_dict[LABELS_SCALARS_VALUES] = torch.tensor(
-                sample_dict[LABELS_SCALARS_VALUES], device=device
-            )
-            sample_dict[LABELS_SCALARS_VALID_MASK] = torch.tensor(
-                sample_dict[LABELS_SCALARS_VALID_MASK], device=device
-            )
+            sample_dict[LABELS_SCALARS_VALUES] = sample_dict[LABELS_SCALARS_VALUES].to(device=device)
+            sample_dict[LABELS_SCALARS_VALID_MASK] = sample_dict[LABELS_SCALARS_VALID_MASK].to(device=device)
+
         return sample_dict
 
     @staticmethod
