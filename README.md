@@ -28,7 +28,7 @@ Follow the next steps to install MAMMAL in a new environment:
    conda install pytorch pytorch-cuda=12.1 -c pytorch -c nvidia
    ```
 
-3. Install the package in an [editable mode](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs) using `pip`:
+3. Install the package in [editable mode](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs) using `pip`:
    ```
    git clone git@github.com:BiomedSciAI/biomed-multi-alignment.git
    pip install -e ./biomed-multi-alignment[examples]
