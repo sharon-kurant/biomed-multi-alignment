@@ -157,7 +157,7 @@ python mammal/main_finetune.py --config-name config.yaml --config-path  examples
 ```
 
 # Modular Tokenizer
-Since many of the tasks in the examples below use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer). 
+Since many of the tasks on which **ibm/biomed.omics.bl.sm.ma-ted-458m** is trained use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer). 
 
 # Tutorials
 If you are interested in a specific guide / tutorial, feel free to [open an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new).
