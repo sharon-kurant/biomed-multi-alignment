@@ -1,7 +1,7 @@
 
 # biomed-multi-alignment
 
-We introduce **ibm/biomed.omics.bl.sm.ma-ted-458m**.
+We introduce [**ibm/biomed.omics.bl.sm.ma-ted-458m**](https://arxiv.org/abs/2410.22367).
 A biomedical foundation model trained on over 2 billion biological samples across multiple modalities, including proteins, small molecules, and single-cell gene expression data.
 Designed for robust performance, it achieves state-of-the-art results on a variety of tasks across the entire drug discovery pipeline and diverse biomedical domains.
 
@@ -9,6 +9,7 @@ The model is based on **MAMMAL** (**M**olecular **A**ligned **M**ulti-**M**odal 
 The syntax allows for dynamic combinations of tokens and scalars, enabling classification, regression, and generation tasks either within a single domain or with cross-domain entities.
 
 The model weights are stored at https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-458m and the MAMMAL core code together with fine-tuning and inference can be found in this repo.
+Learn more by reading our [pre-print](https://arxiv.org/abs/2410.22367).
 
 ![Alt text](mammal.png)
 
@@ -153,7 +154,7 @@ python mammal/examples/dti_bindingdb_kd/main_infer.py <path to finetune output d
 ```
 `<norm_y_mean>` and `<norm_y_std>` should be the values specified in the finetuning configuration file (config.yaml).
 ### Evaluation
-To run evaluation, run the following command:
+To run the evaluation, run the following command:
 ```
 python mammal/main_finetune.py --config-name config.yaml --config-path  examples/dti_bindingdb_kd evaluate=True model.pretrained_kwargs.pretrained_model_name_or_path=<path to finetune output dir>/best_epoch.ckpt
 ```
@@ -171,4 +172,14 @@ If you are interested in a specific guide / tutorial, feel free to [open an issu
 
 # Citations
 If you find our work useful for your research, we ask you to cite the relevant papers:
-* TBD
+```
+@misc{shoshan2024mammalmolecularaligned,
+      title={MAMMAL -- Molecular Aligned Multi-Modal Architecture and Language}, 
+      author={Yoel Shoshan and Moshiko Raboh and Michal Ozery-Flato and Vadim Ratner and Alex Golts and Jeffrey K. Weber and Ella Barkan and Simona Rabinovici-Cohen and Sagi Polaczek and Ido Amos and Ben Shapira and Liam Hazan and Matan Ninio and Sivan Ravid and Michael M. Danziger and Joseph A. Morrone and Parthasarathy Suryanarayanan and Michal Rosen-Zvi and Efrat Hexter},
+      year={2024},
+      eprint={2410.22367},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.QM},
+      url={https://arxiv.org/abs/2410.22367}, 
+}
+```
