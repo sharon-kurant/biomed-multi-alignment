@@ -69,6 +69,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        pip install pipenv -U
         pip install unittest2
         pip install --upgrade pip wheel setuptools requests
         pip install -q .[examples]
