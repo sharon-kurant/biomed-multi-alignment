@@ -63,9 +63,13 @@ jobs:
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         echo $CONDA/bin >> $GITHUB_PATH
+    - name: DEBUG
+      run: |
+        python --version; python3 --version; pip --version; pip3 --version
+
     - name: Install dependencies
       run: |
-        pip install -q .[examples]
+        pip3 install -q .[examples]
     - name: Test with pytest
       run: |
         pytest --durations=40 --cov=mammal --cov-fail-under=45 --capture=no mammal/examples/tests
