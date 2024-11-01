@@ -69,7 +69,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip3 install -q .[examples]
+        pip install unittest2
+        pip install -q .[examples]
     - name: Test with pytest
       run: |
         pytest --durations=40 --cov=mammal --cov-fail-under=45 --capture=no mammal/examples/tests
