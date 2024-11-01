@@ -51,27 +51,19 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 5
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python 3.10
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
-        python-version: '3.9'
-    - name: Add conda to system path
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
-    - name: DEBUG
-      run: |
-        python --version; python3 --version; pip --version; pip3 --version
-
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        pip install pipenv -U
-        pip install unittest2
-        pip install --upgrade pip wheel setuptools requests
+        python -m pip install --upgrade pip
         pip install -q .[examples]
     - name: Test with pytest
       run: |
