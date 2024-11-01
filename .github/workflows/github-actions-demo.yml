@@ -34,26 +34,12 @@ jobs:
       - run: pip install --upgrade pip
       - run: pip install mypy==0.950
       - run: python -m mypy . --show-error-codes
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
   build-linux:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.10", "3.11"]
 
     steps:
     - uses: actions/checkout@v4
@@ -67,4 +53,4 @@ jobs:
         pip install -q .[examples]
     - name: Test with pytest
       run: |
-        pytest --durations=40 --cov=mammal --cov-fail-under=45 --capture=no mammal/examples/tests
+        python -m pytest --durations=40 --cov=mammal --cov-fail-under=45 --capture=no mammal/examples/tests
