@@ -36,7 +36,7 @@ Follow the next steps to install MAMMAL in a new environment:
 
 
 # Examples
-We provide a variety of example tasks, covering one from each domain as well as a multi-domain task. To facilitate easy setup, we've selected tasks with datasets that can be automatically downloaded and come with established data splits.  
+We provide a variety of example tasks, covering one from each domain as well as a multi-domain task. To facilitate easy setup, we've selected tasks with datasets that can be automatically downloaded and come with established data splits.
 While these tasks may not necessarily have State-of-the-Art results we can compare to, they offer practical demonstrations of model application.
 
 Additionally, since the pre-trained model was also trained on a protein-protein interaction task, we demonstrate inference using this task with ibm/biomed.omics.bl.sm.ma-ted-458m.
@@ -160,12 +160,12 @@ python mammal/main_finetune.py --config-name config.yaml --config-path  examples
 ```
 
 # Modular Tokenizer
-Since many of the tasks on which **ibm/biomed.omics.bl.sm.ma-ted-458m** is trained use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer). 
+Since many of the tasks on which **ibm/biomed.omics.bl.sm.ma-ted-458m** is trained use different modalities (amino acid sequences, SMILES, gene expressions, etc.), we implemented a modular tokenizer that can combine multiple tokenizers, mapping their dictionaries to a consistent ID space (https://github.com/BiomedSciAI/fuse-med-ml/tree/master/fuse/data/tokenizers/modular_tokenizer).
 
 # Tutorials
 If you are interested in a specific guide / tutorial, feel free to [open an issue](https://github.com/BiomedSciAI/biomed-multi-alignment/issues/new).
 ### Beginner
-* TBD  
+* TBD
 ### Advanced
 * Create a new Mammal task. [[link](./tutorials/advanced_create_new_task.ipynb)]
 
@@ -174,12 +174,12 @@ If you are interested in a specific guide / tutorial, feel free to [open an issu
 If you find our work useful for your research, we ask you to cite the relevant papers:
 ```
 @misc{shoshan2024mammalmolecularaligned,
-      title={MAMMAL -- Molecular Aligned Multi-Modal Architecture and Language}, 
+      title={MAMMAL -- Molecular Aligned Multi-Modal Architecture and Language},
       author={Yoel Shoshan and Moshiko Raboh and Michal Ozery-Flato and Vadim Ratner and Alex Golts and Jeffrey K. Weber and Ella Barkan and Simona Rabinovici-Cohen and Sagi Polaczek and Ido Amos and Ben Shapira and Liam Hazan and Matan Ninio and Sivan Ravid and Michael M. Danziger and Joseph A. Morrone and Parthasarathy Suryanarayanan and Michal Rosen-Zvi and Efrat Hexter},
       year={2024},
       eprint={2410.22367},
       archivePrefix={arXiv},
       primaryClass={q-bio.QM},
-      url={https://arxiv.org/abs/2410.22367}, 
+      url={https://arxiv.org/abs/2410.22367},
 }
 ```

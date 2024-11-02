@@ -408,7 +408,9 @@ class Mammal(ModelHubMixin, torch.nn.Module):
                 config.override(config_overrides)
             model = cls(config)
 
-            pl_ckpt_dict = torch.load(pretrained_model_name_or_path, map_location="cpu", weights_only=True)
+            pl_ckpt_dict = torch.load(
+                pretrained_model_name_or_path, map_location="cpu", weights_only=True
+            )
             state_dict = pl_ckpt_dict["state_dict"]
             lightning_model_prefix = "_model."
             state_dict = {
