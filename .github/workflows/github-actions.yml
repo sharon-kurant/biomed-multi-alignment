@@ -51,6 +51,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -q .[examples]
+
+    - name: Pre-Commit Hooks
+      run: |
+        pip install pre-commit
+        pre-commit install
+        pre-commit run --all-files --show-diff-on-failure
     - name: Test with pytest
       run: |
         python -m pytest --capture=no mammal/examples/tests
