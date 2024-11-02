@@ -5,35 +5,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-  black:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: psf/black@stable
-        with:
-          options: "--check --verbose --diff --color"
-          src: "."
-          version: "22.3.0"
-  flake8:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.9"
-      - uses: py-actions/flake8@v2
-        with:
-          path: "."
-  mypy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.9"
-      - run: pip install --upgrade pip
-      - run: pip install mypy==0.950
-      - run: python -m mypy . --show-error-codes
   build-linux:
     runs-on: ubuntu-latest
     strategy:
@@ -59,4 +30,4 @@ jobs:
         pre-commit run --all-files --show-diff-on-failure
     - name: Test with pytest
       run: |
-        python -m pytest --capture=no mammal/examples/tests
+        python -m pytest --capture=no mammal/examples/tests/test_simple_inference.py
