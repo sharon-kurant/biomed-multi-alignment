@@ -38,11 +38,13 @@ def main(tcr_beta_seq: str, epitope_seq: str, device: str):
     print(f"The prediction for {epitope_seq} and {tcr_beta_seq} is {result}")
 
 
-def load_model(device: str) -> tuple["Mammal", "ModularTokenizerOp"]:
-    path = "ibm/biomed.omics.bl.sm.ma-ted-458m.tcr_epitope_bind"  # change to "ibm/biomed.omics.bl.sm.ma-ted-458m" to try on the base model
+def load_model(
+    device: str,
+    path: str = "ibm/biomed.omics.bl.sm.ma-ted-458m.tcr_epitope_bind",  # change to "ibm/biomed.omics.bl.sm.ma-ted-458m" to try on the base model
+) -> tuple["Mammal", "ModularTokenizerOp"]:
 
     # Load Model and set to evaluation mode
-    model = Mammal.from_pretrained(path)
+    model = Mammal.from_pretrained(pretrained_model_name_or_path=path)
     model.eval()
     model.to(device=device)
 
